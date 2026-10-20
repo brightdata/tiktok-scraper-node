@@ -89,7 +89,7 @@ jobs:
               *zendesk.com/*) continue ;;    # answers 403 to anything that is not a browser
               *mcp.brightdata.com/*) continue ;;  # carries a placeholder token; nothing to check without a real one
               *api.brightdata.com/*) continue ;;  # API endpoints answer 401 without a key; the README blocks call them
-              *github.com/brightdata/tiktok-scraper-node*) [ "$public" = "200" ] || continue ;;  # unreachable on a private fork
+              *github.com/brightdata/tiktok-scraper*) [ "$public" = "200" ] || continue ;;  # this repo and its Python twin, unreachable while private
             esac
             code=$(curl -s -o /dev/null -L --retry 3 --max-time 30 -A "Mozilla/5.0" -w '%{http_code}' "$url" || echo 000)
             if [ "$code" = "200" ]; then echo "200 $url"; else echo "::error::$code $url"; failed=1; fi
