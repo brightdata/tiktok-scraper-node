@@ -524,7 +524,7 @@ Data connects to, from LangChain to Zapier and n8n:
 Prefix each command with `npx -p @brightdata/cli`, or install once with
 `npm i -g @brightdata/cli`. Each prints JSON and costs one credit per record.
 
-Six scrapers, each run with `bdata pipelines run <dataset_id> <method>`:
+Five scrapers, each run with `bdata pipelines run <dataset_id> <method>`:
 profiles `gd_l1villgoiiidt09ci`, posts `gd_lu702nij2f790tmv9h`, comments
 `gd_lkf2st302ap89utw5k`, the Posts by Profile Fast API `gd_m7n5v2gq296pex2f5m`
 and TikTok Shop `gd_m45m1u911dsa4274pi`.
