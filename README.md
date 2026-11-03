@@ -1,9 +1,9 @@
-# tiktok-scraper-node
+# TikTok scraper for Node.js and JavaScript
 
 [![Live check](https://github.com/brightdata/tiktok-scraper-node/actions/workflows/live.yml/badge.svg)](https://github.com/brightdata/tiktok-scraper-node/actions/workflows/live.yml)
 [![last verified](https://img.shields.io/badge/last%20verified-3%20Nov%202026-brightgreen)](https://github.com/brightdata/tiktok-scraper-node/actions/workflows/live.yml) <!-- verified: rewritten by the daily run -->
 
-[Quickstart](#quickstart) · [Command](#or-run-it-as-a-command) · [Endpoints](#the-rest-of-the-api) · [Data](#the-data) · [Errors](#when-it-fails) · [Coding agents](#coding-agents) · [Docs](https://docs.brightdata.com/products/scrapers/tiktok/introduction) · [Support](#support)
+[Quickstart](#how-to-scrape-tiktok-data-with-nodejs) · [No login](#scrape-tiktok-without-login-or-an-access-token) · [CLI](#bulk-tiktok-scraper-cli) · [Endpoints](#scrape-tiktok-posts-profiles-comments-and-tiktok-shop) · [Data](#tiktok-post-data-fields-json) · [Errors](#tiktok-scraper-errors) · [MCP and Claude Code](#tiktok-mcp-server-and-claude-code-skill) · [Free credits](#is-this-tiktok-scraper-free) · [Docs](https://docs.brightdata.com/products/scrapers/tiktok/introduction) · [Support](#support)
 
 TikTok profiles, posts, comments and TikTok Shop products as JSON, in
 JavaScript. No TikTok login, no browser. Built on the
@@ -14,9 +14,9 @@ Full API docs:
 [TikTok Scraper API](https://docs.brightdata.com/products/scrapers/tiktok/introduction).
 
 Also here: a one-command CLI for recent posts, and the
-[Bright Data CLI](#coding-agents), which needs no JavaScript at all.
+[Bright Data CLI](#tiktok-mcp-server-and-claude-code-skill), which needs no JavaScript at all.
 
-## Quickstart
+## How to scrape TikTok data with Node.js
 
 Node 20 or newer. This package is ESM, so use `import`, not `require`.
 
@@ -34,7 +34,7 @@ Or skip the token. Run `npx -p @brightdata/cli bdata login` once: it opens a
 browser, and from then on the SDK finds the stored credentials on its own, for
 you and for any coding agent working in that terminal. Agents cannot click
 through the login, so do it yourself first. The same CLI scrapes TikTok
-directly; see [Coding agents](#coding-agents).
+directly; see [TikTok MCP server and Claude Code skill](#tiktok-mcp-server-and-claude-code-skill).
 
 No account yet? [Create one](https://brightdata.com/cp/start); new accounts get
 [5,000 free credits a month](https://docs.brightdata.com/general/account/billing-and-pricing/free-tier).
@@ -84,10 +84,16 @@ nothing.
 `pollTimeout` is milliseconds, not seconds. A number copied from a Python
 example expires before the first status check.
 
-## Or run it as a command
+## Scrape TikTok without login or an access token
 
-The command in this repo does the same for several accounts and writes one
-JSON file.
+The TikTok Scraper API needs no TikTok account, no TikTok login and no TikTok
+Research API access. The only credential is a Bright Data API key, set as
+`BRIGHTDATA_API_TOKEN` or stored by `bdata login`.
+
+## Bulk TikTok scraper CLI
+
+The command in this repo runs the Node.js quickstart for several accounts at
+once and writes one JSON file.
 
 ```bash
 npm install -g github:brightdata/tiktok-scraper-node
@@ -137,12 +143,12 @@ zz_not_a_real_account_zz failed: User is banned
 An account that does not exist comes back as "User is banned". An account with
 nothing recent is a success with no posts.
 
-## The rest of the API
+## Scrape TikTok posts, profiles, comments and TikTok Shop
 
 The Bright Data TikTok Scraper API has 12 endpoints, each with its own page in
 the [API reference](https://docs.brightdata.com/api-reference/scrapers/social-media-apis/tiktok-profiles-collect-by-url).
 This SDK wraps four of them, on `client.scrape.tiktok`. The other eight,
-discovery and TikTok Shop, are raw HTTP; [the last section](#tiktok-shop-and-discovery-over-raw-http)
+discovery and TikTok Shop, are raw HTTP; [the last section](#tiktok-shop-scraper-and-discovery-over-raw-http)
 shows the one call they all share.
 
 | you have | want | how |
@@ -169,7 +175,7 @@ fetch in one call and hand back a `ScrapeResult`. The `collect` names hand back
 a `ScrapeJob` you poll yourself when you pass `async: true`. Only that second
 group can pass `includeErrors`.
 
-### Two accounts, one job
+### Scrape multiple TikTok accounts in one job
 
 An array of inputs is one job, not one per account.
 
@@ -231,7 +237,7 @@ fetched: https://www.tiktok.com/@tiktok/video/7680721699171601694 likes: 22900
 A `ScrapeJob` also has `download()` to write the snapshot to disk and
 `cancel()` to stop it.
 
-### A date window
+### Filter TikTok posts by date
 
 ```javascript
 import { bdclient } from "@brightdata/sdk";
@@ -262,7 +268,7 @@ await client.close();
 2026-09-25T20:13:19.000Z 449600 https://www.tiktok.com/@tiktok/video/7689568478570843422
 ```
 
-### A profile, by URL
+### Scrape a TikTok profile by URL
 
 ```javascript
 import { bdclient } from "@brightdata/sdk";
@@ -279,7 +285,7 @@ await client.close();
 tiktok followers: 96400000 videos: 1510
 ```
 
-### Comments on a post
+### Scrape comments from a TikTok video
 
 One credit per comment, and `comments()` has no way to ask for fewer. Check
 `comment_count` on the post first: the TikTok post used elsewhere in this
@@ -302,7 +308,7 @@ await client.close();
 2 comments; first: "GfcgUZxolnnnmmmmmmmm mmm."
 ```
 
-### TikTok Shop and discovery, over raw HTTP
+### TikTok Shop scraper and discovery over raw HTTP
 
 The SDK has no TikTok Shop methods and no TikTok discovery, so these go
 straight to the API. Nothing to install, but this path reads
@@ -359,7 +365,7 @@ wins:
 validates, which is how the table above was checked. Discovery is slow: shop
 discovery by keyword and by category took 18 to 20 minutes for two products.
 
-## The data
+## TikTok post data fields (JSON)
 
 The fields most people want:
 
@@ -461,7 +467,7 @@ The whole file, one post with every field, is
 
 </details>
 
-## When it fails
+## TikTok scraper errors
 
 | you see | what it means |
 | --- | --- |
@@ -483,7 +489,7 @@ From the SDK, the same conditions look like this:
 | zero rows where you expected an error | You did not pass `includeErrors: true`, so the API dropped the row that would have explained it. |
 | HTTP 400 `validation_error` on raw HTTP | An input field the API does not accept. The message names it; compare with the table above. |
 
-## Coding agents
+## TikTok MCP server and Claude Code skill
 
 No JavaScript, nothing installed. Paste both lines; the first opens a browser
 once, or use `bdata login --device` over SSH and in CI:
@@ -572,6 +578,15 @@ bdata pipelines run gd_m45m1u911dsa4274pi collect_by_url "https://shop.tiktok.co
 
 </details>
 
+## Is this TikTok scraper free?
+
+New Bright Data accounts get
+[5,000 free credits a month](https://docs.brightdata.com/general/account/billing-and-pricing/free-tier).
+Posts, profiles and TikTok Shop products cost one credit per record, and
+comments one credit per comment, so the free credits cover 5,000 posts a
+month. [Pricing](https://brightdata.com/pricing/web-scraper) lists the rates
+after that.
+
 ## Support
 
 Bugs in this repo:
@@ -584,6 +599,6 @@ Anything about the API, your account or your credits:
 
 [Apache 2.0](LICENSE).
 
-## Python version
+## TikTok scraper for Python
 
 The same TikTok scraper is available for Python: [brightdata/tiktok-scraper](https://github.com/brightdata/tiktok-scraper).
