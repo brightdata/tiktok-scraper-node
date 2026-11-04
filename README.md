@@ -1,7 +1,7 @@
 # TikTok scraper for Node.js and JavaScript
 
 [![Live check](https://github.com/brightdata/tiktok-scraper-node/actions/workflows/live.yml/badge.svg)](https://github.com/brightdata/tiktok-scraper-node/actions/workflows/live.yml)
-[![last verified](https://img.shields.io/badge/last%20verified-3%20Nov%202026-brightgreen)](https://github.com/brightdata/tiktok-scraper-node/actions/workflows/live.yml) <!-- verified: rewritten by the daily run -->
+[![last check failed](https://img.shields.io/badge/last%20check%20failed-4%20Nov%202026-red)](https://github.com/brightdata/tiktok-scraper-node/actions/workflows/live.yml) <!-- verified: rewritten by the daily run -->
 
 [Quickstart](#how-to-scrape-tiktok-data-with-nodejs) · [No login](#scrape-tiktok-without-login-or-an-access-token) · [CLI](#bulk-tiktok-scraper-cli) · [Endpoints](#scrape-tiktok-posts-profiles-comments-and-tiktok-shop) · [Data](#tiktok-post-data-fields-json) · [Errors](#tiktok-scraper-errors) · [MCP and Claude Code](#tiktok-mcp-server-and-claude-code-skill) · [Free credits](#is-this-tiktok-scraper-free) · [Docs](https://docs.brightdata.com/products/scrapers/tiktok/introduction) · [Support](#support)
 
