@@ -62,6 +62,9 @@ describe("handles", () => {
     assert.equal(cleanHandle("khaby.lame"), "khaby.lame");
     assert.equal(cleanHandle("https://www.tiktok.com/@tiktok"), "tiktok");
     assert.equal(cleanHandle("https://www.tiktok.com/@tiktok/?lang=en"), "tiktok");
+    const video = "https://www.tiktok.com/@khaby.lame/video/7697307919943060767";
+    assert.equal(cleanHandle(video), "khaby.lame");
+    assert.throws(() => cleanHandle("https://vm.tiktok.com/ZMabc123/"), /is not a TikTok handle/);
     assert.throws(() => cleanHandle("not a handle"), /is not a TikTok handle/);
   });
 });

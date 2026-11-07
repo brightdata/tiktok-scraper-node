@@ -509,9 +509,11 @@ commands and the docs, so plain language works afterwards. Full guide:
 
 No terminal, for a hosted assistant? The
 [Bright Data MCP server](https://github.com/brightdata/brightdata-mcp#which-tool-to-use)
-has TikTok tools in its `social` group, which is off unless you ask for it:
+runs every Bright Data scraper, TikTok included, through six tools such as
+`search_scrapers` and `run_scraper`. They are on by default; to load only
+them, add the `scrapers` group:
 
-    https://mcp.brightdata.com/mcp?token=YOUR_API_TOKEN&groups=social
+    https://mcp.brightdata.com/mcp?token=YOUR_API_TOKEN&groups=scrapers
 
 An agent can also open the account itself, no signup form:
 [agent registration](https://brightdata.com/auth.md). Everything else Bright

@@ -45,7 +45,8 @@ export const sdk = { bdclient };
 export function cleanHandle(handle) {
   let cleaned = String(handle ?? "").trim().split("?")[0].replace(/\/+$/, "");
   if (cleaned.includes("tiktok.com/")) {
-    cleaned = cleaned.slice(cleaned.lastIndexOf("/") + 1);
+    // the @handle segment, so a video URL gives its creator, not the video ID
+    cleaned = cleaned.split("/").find((part) => part.startsWith("@")) ?? "";
   }
   cleaned = cleaned.replace(/^@/, "");
   if (!HANDLE.test(cleaned)) {
