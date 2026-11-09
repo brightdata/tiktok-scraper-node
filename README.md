@@ -1,7 +1,7 @@
 # TikTok scraper for Node.js and JavaScript
 
 Scrape TikTok profiles, videos, comments and TikTok Shop products to JSON with Node.js and JavaScript. No TikTok login, no browser.
-Built on the [Bright Data TikTok Scraper API](https://brightdata.com/products/web-scraper/tiktok?utm_source=github). New accounts get 5,000 free credits a month.
+Built on the [Bright Data TikTok Scraper API](https://brightdata.com/products/web-scraper/tiktok?utm_source=github&utm_medium=referral&utm_content=tiktok-scraper-node). New accounts get 5,000 free credits a month.
 
 [![Live check](https://github.com/brightdata/tiktok-scraper-node/actions/workflows/live.yml/badge.svg)](https://github.com/brightdata/tiktok-scraper-node/actions/workflows/live.yml)
 [![last verified](https://img.shields.io/badge/last%20verified-9%20Nov%202026-brightgreen)](https://github.com/brightdata/tiktok-scraper-node/actions/workflows/live.yml) <!-- verified: rewritten by the daily run -->
@@ -10,7 +10,7 @@ Built on the [Bright Data TikTok Scraper API](https://brightdata.com/products/we
 
 TikTok profiles, posts, comments and TikTok Shop products as JSON, in
 JavaScript. No TikTok login, no browser. Built on the
-[Bright Data TikTok Scraper API](https://brightdata.com/products/web-scraper/tiktok?utm_source=github).
+[Bright Data TikTok Scraper API](https://brightdata.com/products/web-scraper/tiktok?utm_source=github&utm_medium=referral&utm_content=tiktok-scraper-node).
 
 Uses the [Bright Data JavaScript SDK](https://github.com/brightdata/sdk-js).
 Full API docs:
