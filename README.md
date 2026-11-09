@@ -604,3 +604,11 @@ Anything about the API, your account or your credits:
 ## TikTok scraper for Python
 
 The same TikTok scraper is available for Python: [brightdata/tiktok-scraper](https://github.com/brightdata/tiktok-scraper).
+
+## More open source scrapers from Bright Data
+
+Other Node.js scrapers built the same way, with live-verified examples:
+
+- [Instagram scraper for Node.js](https://github.com/brightdata/instagram-scraper-node)
+- [YouTube scraper for Node.js](https://github.com/brightdata/youtube-scraper-node)
+- [Facebook scraper for Node.js](https://github.com/brightdata/facebook-scraper-node)
