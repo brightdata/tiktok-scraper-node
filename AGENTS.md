@@ -65,12 +65,12 @@ the live API is what is written here.
 - `npm test` runs offline and needs no token. `npm run lint` must pass.
 - CI installs from the README's own commands on an empty machine. A weekly
   workflow executes every fenced block in the README against the real API, and
-  a daily one runs a smaller live check.
+  the same run also does a smaller live check.
   A snippet must be complete and paste-able on its own, and its shown output
   must be real.
 - The field table in the README sits between `<!-- fields:start -->` and
-  `<!-- fields:end -->` and is regenerated daily. Do not edit it by hand.
+  `<!-- fields:end -->` and is regenerated weekly. Do not edit it by hand.
 - The "last verified" badge line at the top of the README is rewritten by the
-  daily run. Do not edit it by hand.
+  weekly run. Do not edit it by hand.
 - Keep it small. Do not add retries, deduplication, scheduling, databases or
   concurrency.

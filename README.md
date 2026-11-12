@@ -4,7 +4,7 @@ Scrape TikTok profiles, videos, comments and TikTok Shop products to JSON with N
 Built on the [Bright Data TikTok Scraper API](https://brightdata.com/products/web-scraper/tiktok?utm_source=github&utm_medium=referral&utm_content=tiktok-scraper-node). New accounts get 5,000 free credits a month.
 
 [![Live check](https://github.com/brightdata/tiktok-scraper-node/actions/workflows/live.yml/badge.svg)](https://github.com/brightdata/tiktok-scraper-node/actions/workflows/live.yml)
-[![last verified](https://img.shields.io/badge/last%20verified-11%20Nov%202026-brightgreen)](https://github.com/brightdata/tiktok-scraper-node/actions/workflows/live.yml) <!-- verified: rewritten by the daily run -->
+[![last verified](https://img.shields.io/badge/last%20verified-11%20Nov%202026-brightgreen)](https://github.com/brightdata/tiktok-scraper-node/actions/workflows/live.yml) <!-- verified: rewritten by the weekly run -->
 
 [Quickstart](#how-to-scrape-tiktok-data-with-nodejs) · [No login](#scrape-tiktok-without-login-or-an-access-token) · [CLI](#bulk-tiktok-scraper-cli) · [Endpoints](#scrape-tiktok-posts-profiles-comments-and-tiktok-shop) · [Data](#tiktok-post-data-fields-json) · [Errors](#tiktok-scraper-errors) · [MCP and Claude Code](#tiktok-mcp-server-and-claude-code-skill) · [Free credits](#is-this-tiktok-scraper-free) · [Docs](https://docs.brightdata.com/products/scrapers/tiktok/introduction) · [Support](#support)
 
@@ -384,7 +384,7 @@ string. The code hardcodes no field list. Whatever the API returns lands in
 <details>
 <summary>All 44 fields, with type and description</summary>
 
-Regenerated every day from the Posts dataset schema, via
+Regenerated every week from the Posts dataset schema, via
 `client.datasets.tiktokPosts.getMetadata()`, so it cannot go stale. The
 Fast API the command calls returns a subset; the sample file has 36
 of these 44.
