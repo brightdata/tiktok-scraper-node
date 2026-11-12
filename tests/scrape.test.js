@@ -368,3 +368,22 @@ describe("the README", () => {
     }
   });
 });
+
+describe("hosts", () => {
+  test("a URL on another host is not a handle", () => {
+    assert.equal(cleanHandle("tiktok.com/@tiktok"), "tiktok");
+    for (const url of [
+      "https://evil.com/tiktok.com/@tiktok",
+      "https://tiktok.com.evil.com/@tiktok",
+      "https://nottiktok.com/@tiktok",
+    ]) {
+      assert.throws(() => cleanHandle(url), /is not a TikTok handle/, url);
+    }
+  });
+
+  test("a long run of slashes is cheap to reject", () => {
+    const started = Date.now();
+    assert.throws(() => cleanHandle(`${"/".repeat(50_000)}x`));
+    assert.ok(Date.now() - started < 500);
+  });
+});
